@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-active-page="home">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,13 +32,37 @@
         }
 
         html {
+            --scrollbar-track: var(--maroon);
             width: 100%;
             max-width: 100%;
             overflow-x: hidden;
             overscroll-behavior: none;
-            background: var(--black);
+            background: var(--scrollbar-track);
             scroll-behavior: smooth;
             scroll-padding-top: 82px;
+            scrollbar-color: rgba(21, 21, 21, .55) var(--scrollbar-track);
+        }
+
+        html[data-active-page="contact"] {
+            --scrollbar-track: var(--black);
+        }
+
+        html[data-active-page="work"] {
+            --scrollbar-track: #f5e9ec;
+        }
+
+        html::-webkit-scrollbar {
+            width: 14px;
+        }
+
+        html::-webkit-scrollbar-track {
+            background: var(--scrollbar-track);
+        }
+
+        html::-webkit-scrollbar-thumb {
+            border: 4px solid var(--scrollbar-track);
+            border-radius: 999px;
+            background: rgba(21, 21, 21, .55);
         }
 
         body {
@@ -1019,6 +1043,7 @@
         function showFullGallery(updateHistory = true) {
             siteView.hidden = true;
             galleryView.hidden = false;
+            document.documentElement.dataset.activePage = "work";
             navigationLinks.forEach((link) => {
                 if (link.getAttribute("href") === "#work") {
                     link.setAttribute("aria-current", "page");
@@ -1045,6 +1070,7 @@
 
             galleryView.hidden = true;
             siteView.hidden = false;
+            document.documentElement.dataset.activePage = page;
             siteView.dataset.activePage = page;
             pageContent.forEach((content) => {
                 content.hidden = content.dataset.page !== page;
