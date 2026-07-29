@@ -1,0 +1,8 @@
+{
+  "name": "ohstripe-website",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-gallery.mjs",
+    "gallery:sync": "node scripts/build-gallery.mjs"
+  }
+}
