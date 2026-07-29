@@ -1,4 +1,4 @@
 # OH-Stripe
 
 
-Draft web page for OH Stripe
+Draft page for the social hub.
